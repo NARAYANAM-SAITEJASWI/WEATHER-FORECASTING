@@ -57,7 +57,19 @@ let city = document.getElementById("city");
     input.value=""
  }
 
- function myFun(){
-    search=input.value;
-    data(search)
- }
+ function myFun() {
+    const search = input.value.trim();
+    if (search !== "") {
+        data(search);
+    } else {
+        alert("Please enter a city name.");
+    }
+}
+
+
+ input.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault(); 
+        myFun(); 
+    }
+});
